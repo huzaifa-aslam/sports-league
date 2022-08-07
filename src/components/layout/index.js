@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       <div className="row">
         <div className="col-md-12 justify-content-between d-flex">
           <div className="pt-1">
-            <img src={logo} alt="logo-image" className={styles.logo} />
+            <img src={logo} alt="logo" className={styles.logo} />
           </div>
           <div className={clsx(` pt-3  ${styles.rightCol}`)}>
             <img src={scheduleLogo} alt="schedule" className={styles.icon} />

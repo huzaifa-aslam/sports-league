@@ -3,3 +3,57 @@
     padding-top: 60px;
     padding-bottom: 20px;
 }
+.tblHeader{
+    font-size:12px;
+    color: #4B5C68;
+    background-color: #f2f2f2 !important;
+}
+.nonBoldedCell{
+    font-size:14px;
+    color: #4B5C68;
+    padding-top: 20px !important;
+}
+.boldedCell{
+    font-size:16px;
+    color: #4B5C68;
+    font-weight: bold;
+    padding-top: 20px !important;
+
+}
+.countryFlag{
+    height: 27px;
+    width: 38px;
+}
+.td{
+    width: 110px;
+    text-align: right;
+    padding-right: 12px;
+}
+.tdRight{
+    width: 110px;
+    text-align: left;
+    padding-left: 12px;
+}
+.tr{
+    height: 70px;
+    text-align:left
+}
+
+.tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+.tdStadium{
+    width: 500px;
+}
+.tdHomeTeam{
+    width: 100px;
+    padding-right: 15px !important;
+}
+.tdScore{
+    width: 62px;
+
+}
+.homeHeader{
+    text-align: right;
+    padding-right: 17px !important;
+}

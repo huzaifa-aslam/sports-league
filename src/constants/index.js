@@ -1,12 +1,18 @@
+// ********* components***************
+
 import Leaderboard from "../pages/leaderboard";
 import NotFound from "../pages/notFound";
 import Schedule from "../pages/schedule";
+// ********* base url***************
 
-export const url = "http://localhost:3001/api";
-export const v1 = "/v1/";
-export const version = "version";
-export const getToken = "getAccessToken";
-export const getMatches = "getAllMatches";
+export const baseUrl = "http://localhost:3001/api";
+// ********* end points***************
+
+export const v1 = "/v1";
+export const version = "/version";
+export const getAccessToken = "/getAccessToken";
+export const getAllMatches = "/getAllMatches";
+// ********* page routes***************
 export const schedule = "/schedule";
 export const leaderBoard = "/leaderboard";
 export const slash = "/";
