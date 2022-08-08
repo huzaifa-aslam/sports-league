@@ -30,6 +30,16 @@ export const matchLostPoint = 0;
 
 // *********component routes***************
 
+export const INITIAL_LEADERBOARD_DETAIL = {
+  teamName: "",
+  matchPlayed: 0,
+  goalsFor: 0,
+  goalsAgainst: 0,
+  points: 0,
+};
+
+// *********component routes***************
+
 export const routes = [
   {
     path: slash,

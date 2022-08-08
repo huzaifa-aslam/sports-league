@@ -1,5 +1,5 @@
 import { getAllMatches, getAccessToken, v1, version } from "../constants";
-import { callGetAPI, fetchMatches } from "../helper/helper";
+import { callGetAPI, fetchMatches, getLeaderboardData } from "../helper/helper";
 /**
  * A class representing a service that processes the data for match schedule
  * and generates leaderboard.
@@ -58,7 +58,10 @@ class LeagueService {
    *
    * @returns {Array} List of teams representing the leaderboard.
    */
-  getLeaderboard() {}
+  getLeaderboard(teams) {
+    let leaderBoardData = getLeaderboardData(teams);
+    return leaderBoardData;
+  }
 
   /**
    * Asynchronic function to fetch the data from the server.

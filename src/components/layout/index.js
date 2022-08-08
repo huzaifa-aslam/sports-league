@@ -2,11 +2,9 @@ import React from "react";
 import Footer from "../footer";
 import clsx from "clsx";
 import styles from "./layout.module.css";
-import scheduleLogo from "../../Images/schedule.png";
-import leaderboard from "../../Images/leaderboard.png";
-import logo from "../../Images/logo.svg";
 import { Link } from "react-router-dom";
 import { leaderBoard, schedule } from "../../constants";
+const publicFolder = process.env.PUBLIC_URL;
 const Layout = ({ children }) => {
   return (
     <>
@@ -14,10 +12,18 @@ const Layout = ({ children }) => {
         <div className="row">
           <div className=" justify-content-between d-flex">
             <div className="pt-1">
-              <img src={logo} alt="logo" className={styles.logo} />
+              <img
+                src={`${publicFolder}/Images/logo.svg`}
+                alt="logo"
+                className={styles.logo}
+              />
             </div>
             <div className={clsx(` pt-3  ${styles.rightCol}`)}>
-              <img src={scheduleLogo} alt="schedule" className={styles.icon} />
+              <img
+                src={`${publicFolder}/Images/schedule.png`}
+                alt="schedule"
+                className={styles.icon}
+              />
               <p className={clsx(styles.leftText, styles.textColor)}>
                 <Link
                   className={clsx(`text-decoration-none ${styles.textColor}`)}
@@ -27,7 +33,7 @@ const Layout = ({ children }) => {
                 </Link>
               </p>
               <img
-                src={leaderboard}
+                src={`${publicFolder}/Images/leaderboard.png`}
                 alt="leaderboard"
                 className={styles.icon}
               />
