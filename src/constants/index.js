@@ -13,10 +13,10 @@ export const flagUrl = `https://countryflagsapi.com/png/`;
 export const baseUrl = "http://localhost:3001/api";
 // ********* end points***************
 
-export const v1 = "/v1";
+export const v1 = "/v1/";
 export const version = "/version";
-export const getAccessToken = "/getAccessToken";
-export const getAllMatches = "/getAllMatches";
+export const getAccessToken = "getAccessToken";
+export const getAllMatches = "getAllMatches";
 // ********* page routes***************
 export const schedule = "/schedule";
 export const leaderBoard = "/leaderboard";

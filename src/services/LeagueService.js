@@ -1,5 +1,5 @@
 import { getAllMatches, getAccessToken, v1, version } from "../constants";
-import { callGetAPI, fetchMatches, getLeaderboardData } from "../helper/helper";
+import { callGetAPI, fetchMatches, getLeaderboardData } from "../helper";
 /**
  * A class representing a service that processes the data for match schedule
  * and generates leaderboard.
