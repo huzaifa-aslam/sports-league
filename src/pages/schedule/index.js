@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LeagueService from "../../services/LeagueService";
 import ScheduleView from "./ScheduleView";
 import moment from "moment";
+import { flagUrl } from "../../constants";
 const Schedule = () => {
   const http = new LeagueService();
   const [matches, setMatches] = useState([]);
@@ -14,7 +15,6 @@ const Schedule = () => {
         if (response.status === 200 || response.status === 201) {
           let result = await response.json();
           let updatedData = result.matches.map((item) => {
-            let flagUrl = `https://countryflagsapi.com/png/`;
             return {
               ...item,
               date: moment(item.matchDate).format("DD.MM.YYYY"),

@@ -6,4 +6,10 @@ body {
 *{
   font-family:sans-serif !important
 }
-
+thead {
+  background-color: #E4EDF2 !important;
+}
+table{
+  border-color: #E4EDF2 !important;
+  color:#4B5C68 !important
+}

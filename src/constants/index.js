@@ -3,6 +3,11 @@
 import Leaderboard from "../pages/leaderboard";
 import NotFound from "../pages/notFound";
 import Schedule from "../pages/schedule";
+
+// ********* base url***************
+
+export const flagUrl = `https://countryflagsapi.com/png/`;
+
 // ********* base url***************
 
 export const baseUrl = "http://localhost:3001/api";
