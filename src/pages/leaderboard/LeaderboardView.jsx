@@ -57,22 +57,6 @@ const LeaderboardView = ({ matches }) => {
                         </th>
                       );
                     })}
-                    {/* <th className={clsx(`${styles.tblHeader} hi`)} scope="col">
-                      Date/Time
-                    </th>
-                    <th className={styles.tblHeader} scope="col">
-                      Stadium
-                    </th>
-                    <th
-                      className={clsx(styles.tblHeader, styles.homeHeader)}
-                      scope="col"
-                    >
-                      Home Team
-                    </th>
-                    <th className={styles.tblHeader} scope="col"></th>
-                    <th className={styles.tblHeader} scope="col">
-                      Away Team
-                    </th> */}
                   </tr>
                 </thead>
                 <tbody>

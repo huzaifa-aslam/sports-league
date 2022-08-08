@@ -23,6 +23,13 @@ export const leaderBoard = "/leaderboard";
 export const slash = "/";
 export const notFound = "/*";
 
+// ********* basic constant***************
+export const matchDrawPoint = 1;
+export const matchWonPoint = 3;
+export const matchLostPoint = 0;
+
+// *********component routes***************
+
 export const routes = [
   {
     path: slash,

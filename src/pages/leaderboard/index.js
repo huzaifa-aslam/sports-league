@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
 import LeagueService from "../../services/LeagueService";
 import LeaderboardView from "./LeaderboardView";
-import moment from "moment";
-import { flagUrl } from "../../constants";
+import {
+  flagUrl,
+  matchDrawPoint,
+  matchLostPoint,
+  matchWonPoint,
+} from "../../constants";
+const INITIAL_TEAM_DETAIL = {
+  teamName: "",
+  matchPlayed: 0,
+  goalsFor: 0,
+  goalsAgainst: 0,
+  points: 0,
+};
 const Leaderboard = () => {
   const http = new LeagueService();
   const [matches, setMatches] = useState([]);
@@ -24,7 +35,13 @@ const Leaderboard = () => {
 
     getAllMatches();
   }, []);
-
+  const getMatchDetail = (obj, homeTeamScore, awayTeamScore, point) => {
+    obj.goalsFor = obj.goalsFor + homeTeamScore;
+    obj.goalsAgainst = obj.goalsAgainst + awayTeamScore;
+    obj.points = obj.points + point;
+    ++obj.matchPlayed;
+    return obj;
+  };
   const getTeamsDetail = (teams) => {
     let allHomeTeams = teams?.map((item) => item?.homeTeam);
     let allAwayTeams = teams?.map((item) => item?.awayTeam);
@@ -33,13 +50,7 @@ const Leaderboard = () => {
       (team, index) => allTeams?.indexOf(team) === index
     );
     let result = [];
-    let obj = {
-      teamName: "",
-      matchPlayed: 0,
-      goalsFor: 0,
-      goalsAgainst: 0,
-      points: 0,
-    };
+    let obj = { ...INITIAL_TEAM_DETAIL };
     for (let index = 0; index < uniqueTeams?.length; index++) {
       const team = uniqueTeams?.[index];
       obj.teamName = team;
@@ -48,37 +59,55 @@ const Leaderboard = () => {
         if (subElement?.matchPlayed) {
           if (team === subElement?.homeTeam) {
             if (subElement?.homeTeamScore === subElement?.awayTeamScore) {
-              obj.goalsFor = obj.goalsFor + subElement?.homeTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.awayTeamScore;
-              obj.points = obj.points + 1;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.homeTeamScore,
+                subElement?.awayTeamScore,
+                matchDrawPoint
+              );
+              obj = data;
             } else if (subElement?.homeTeamScore > subElement?.awayTeamScore) {
-              obj.goalsFor = obj.goalsFor + subElement?.homeTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.awayTeamScore;
-              obj.points = obj.points + 3;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.homeTeamScore,
+                subElement?.awayTeamScore,
+                matchWonPoint
+              );
+              obj = data;
             } else {
-              obj.goalsFor = obj.goalsFor + subElement?.homeTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.awayTeamScore;
-              obj.points = obj.points + 0;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.homeTeamScore,
+                subElement?.awayTeamScore,
+                matchLostPoint
+              );
+              obj = data;
             }
           } else if (team === subElement?.awayTeam) {
             if (subElement?.awayTeamScore === subElement?.homeTeamScore) {
-              obj.goalsFor = obj.goalsFor + subElement?.awayTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.homeTeamScore;
-              obj.points = obj.points + 1;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.awayTeamScore,
+                subElement?.homeTeamScore,
+                matchDrawPoint
+              );
+              obj = data;
             } else if (subElement?.awayTeamScore > subElement?.homeTeamScore) {
-              obj.goalsFor = obj.goalsFor + subElement?.awayTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.homeTeamScore;
-              obj.points = obj.points + 3;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.awayTeamScore,
+                subElement?.homeTeamScore,
+                matchWonPoint
+              );
+              obj = data;
             } else {
-              obj.goalsFor = obj.goalsFor + subElement?.awayTeamScore;
-              obj.goalsAgainst = obj.goalsAgainst + subElement?.homeTeamScore;
-              obj.points = obj.points + 0;
-              ++obj.matchPlayed;
+              const data = getMatchDetail(
+                obj,
+                subElement?.awayTeamScore,
+                subElement?.homeTeamScore,
+                matchLostPoint
+              );
+              obj = data;
             }
           }
         }
@@ -89,13 +118,7 @@ const Leaderboard = () => {
         goalDifference: Math.abs(obj.goalsFor - obj.goalsAgainst),
         flag: `${flagUrl}${obj.teamName}`,
       });
-      obj = {
-        teamName: "",
-        matchPlayed: 0,
-        goalsFor: 0,
-        goalsAgainst: 0,
-        points: 0,
-      };
+      obj = { ...INITIAL_TEAM_DETAIL };
     }
     return result;
   };

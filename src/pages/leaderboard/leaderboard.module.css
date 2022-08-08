@@ -42,19 +42,10 @@
     text-align:left
 }
 
-.tdStadium{
-    width: 500px;
-}
-.tdHomeTeam{
-    width: 100px;
-    padding-right: 15px !important;
-}
+
+
 .tdPoints{
     color: blue;
     padding-left: 22px !important;
 
-}
-.homeHeader{
-    text-align: right;
-    padding-right: 17px !important;
 }
