@@ -3,7 +3,28 @@ import Layout from "../../components/layout";
 import styles from "./schedule.module.css";
 import clsx from "clsx";
 const ScheduleView = ({ matches }) => {
-  // const header = ["Date/Time", "Stadium", "Home Team", "", "Away Team"];
+  const header = [
+    {
+      name: "Date/Time",
+      classes: `${styles.tblHeader} ${styles.displayDateTimeNone}`,
+    },
+    {
+      name: "Stadium",
+      classes: `${styles.tblHeader} ${styles.displayStadiumNone}`,
+    },
+    {
+      name: "Home Team",
+      classes: `${styles.tblHeader} ${styles.homeHeader}`,
+    },
+    {
+      name: "",
+      classes: `${styles.tblHeader}`,
+    },
+    {
+      name: "Away Team",
+      classes: `${styles.tblHeader} `,
+    },
+  ];
   return (
     <Layout>
       <div className={clsx(`container-fluid ${styles.root} `)}>
@@ -20,14 +41,14 @@ const ScheduleView = ({ matches }) => {
               <table className="table table-hover">
                 <thead>
                   <tr>
-                    {/* {header.map((item, idx) => {
-                return (
-                  <th className={styles.tblHeader} key={idx} scope="col">
-                    {item}
-                  </th>
-                );
-              })} */}
-                    <th
+                    {header.map((item, idx) => {
+                      return (
+                        <th className={item.classes} key={idx} scope="col">
+                          {item.name}
+                        </th>
+                      );
+                    })}
+                    {/* <th
                       className={clsx(
                         styles.tblHeader,
                         styles.displayDateTimeNone
@@ -54,7 +75,7 @@ const ScheduleView = ({ matches }) => {
                     <th className={styles.tblHeader} scope="col"></th>
                     <th className={styles.tblHeader} scope="col">
                       Away Team
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody>
