@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     <>
       <div className={clsx(`container-fluid ${styles.root}`)}>
         <div className="row">
-          <div className="col-md-12 justify-content-between d-flex">
+          <div className=" justify-content-between d-flex">
             <div className="pt-1">
               <img src={logo} alt="logo" className={styles.logo} />
             </div>

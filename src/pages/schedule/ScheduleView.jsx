@@ -6,7 +6,7 @@ const ScheduleView = ({ matches }) => {
   // const header = ["Date/Time", "Stadium", "Home Team", "", "Away Team"];
   return (
     <Layout>
-      <div className={clsx(`${styles.root} container-flaud`)}>
+      <div className={clsx(`container-fluid ${styles.root} `)}>
         <div className="row">
           <div className="col-md-12">
             <h4
@@ -16,8 +16,8 @@ const ScheduleView = ({ matches }) => {
             >
               League Schedule
             </h4>
-            {
-              <table class="table table-hover">
+            <div className="table-responsive">
+              <table className="table table-hover">
                 <thead>
                   <tr>
                     {/* {header.map((item, idx) => {
@@ -27,10 +27,22 @@ const ScheduleView = ({ matches }) => {
                   </th>
                 );
               })} */}
-                    <th className={clsx(`${styles.tblHeader} hi`)} scope="col">
+                    <th
+                      className={clsx(
+                        styles.tblHeader,
+                        styles.displayDateTimeNone
+                      )}
+                      scope="col"
+                    >
                       Date/Time
                     </th>
-                    <th className={styles.tblHeader} scope="col">
+                    <th
+                      className={clsx(
+                        styles.tblHeader,
+                        styles.displayStadiumNone
+                      )}
+                      scope="col"
+                    >
                       Stadium
                     </th>
                     <th
@@ -62,7 +74,12 @@ const ScheduleView = ({ matches }) => {
                     ) => {
                       return (
                         <tr key={idx} className={styles.tr}>
-                          <td className={styles.nonBoldedCell}>
+                          <td
+                            className={clsx(
+                              styles.nonBoldedCell,
+                              styles.displayDateTimeNone
+                            )}
+                          >
                             <td className="d-flex">{date}</td>
                             {/* <br /> */}
                             <td className={styles.tdTime}>{time}</td>
@@ -70,7 +87,8 @@ const ScheduleView = ({ matches }) => {
                           <td
                             className={clsx(
                               styles.nonBoldedCell,
-                              styles.tdStadium
+                              styles.tdStadium,
+                              styles.displayStadiumNone
                             )}
                           >
                             {stadium}
@@ -81,7 +99,9 @@ const ScheduleView = ({ matches }) => {
                               styles.tdHomeTeam
                             )}
                           >
-                            <td className={styles.td}>{homeTeam}</td>
+                            <td className={clsx(`${styles.td} pt-2`)}>
+                              {homeTeam}
+                            </td>
                             <td>
                               <img
                                 className={styles.countryFlag}
@@ -104,7 +124,9 @@ const ScheduleView = ({ matches }) => {
                                 alt="Away Team Flag"
                               />
                             </td>
-                            <td className={styles.tdRight}>{awayTeam}</td>
+                            <td className={clsx(`${styles.tdRight} pt-2`)}>
+                              {awayTeam}
+                            </td>
                           </td>
                         </tr>
                       );
@@ -112,7 +134,7 @@ const ScheduleView = ({ matches }) => {
                   )}
                 </tbody>
               </table>
-            }
+            </div>
           </div>
         </div>
       </div>

@@ -7,26 +7,32 @@ const LeaderboardView = ({ matches }) => {
     {
       name: "Team Name",
       width: "",
+      classes: `${styles.tblHeader} `,
     },
     {
       name: "MP",
       width: "90px",
+      classes: `${styles.tblHeader}`,
     },
     {
       name: "GD",
       width: "90px",
+      classes: `${styles.tblHeader} ${styles.displayGoalDiff}`,
     },
     {
       name: "GF",
       width: "90px",
+      classes: `${styles.tblHeader} ${styles.displayNone}`,
     },
     {
       name: "GA",
       width: "90px",
+      classes: `${styles.tblHeader} ${styles.displayNone}`,
     },
     {
       name: "Points",
       width: "90px",
+      classes: `${styles.tblHeader}`,
     },
   ];
   return (
@@ -41,14 +47,14 @@ const LeaderboardView = ({ matches }) => {
             >
               League Standings
             </h4>
-            {
-              <table class="table table-hover">
+            <div className="table-responsive">
+              <table className="table table-hover">
                 <thead>
                   <tr>
                     {header.map((item, idx) => {
                       return (
                         <th
-                          className={styles.tblHeader}
+                          className={item.classes}
                           width={item.width}
                           key={idx}
                           scope="col"
@@ -75,7 +81,7 @@ const LeaderboardView = ({ matches }) => {
                     ) => {
                       return (
                         <tr key={idx} className={styles.tr}>
-                          <td className={styles.boldedCell}>
+                          <td className={clsx(` ${styles.boldedCell}`)}>
                             <td>
                               <img
                                 className={styles.countryFlag}
@@ -89,13 +95,28 @@ const LeaderboardView = ({ matches }) => {
                           <td className={clsx(styles.nonBoldedCell)}>
                             {matchPlayed}
                           </td>
-                          <td className={clsx(styles.nonBoldedCell)}>
+                          <td
+                            className={clsx(
+                              styles.nonBoldedCell,
+                              styles.displayGoalDiff
+                            )}
+                          >
                             {goalDifference}
                           </td>
-                          <td className={clsx(styles.nonBoldedCell)}>
+                          <td
+                            className={clsx(
+                              styles.nonBoldedCell,
+                              styles.displayNone
+                            )}
+                          >
                             {goalsFor}
                           </td>
-                          <td className={clsx(styles.nonBoldedCell)}>
+                          <td
+                            className={clsx(
+                              styles.nonBoldedCell,
+                              styles.displayNone
+                            )}
+                          >
                             {goalsAgainst}
                           </td>
 
@@ -110,7 +131,7 @@ const LeaderboardView = ({ matches }) => {
                   )}
                 </tbody>
               </table>
-            }
+            </div>
           </div>
         </div>
       </div>

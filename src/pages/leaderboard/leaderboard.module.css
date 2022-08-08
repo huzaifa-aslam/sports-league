@@ -14,18 +14,18 @@
 .nonBoldedCell{
     font-size:14px;
     /* color: #4B5C68; */
-    padding-top: 20px !important;
+    padding-top: 25px !important;
 }
 .boldedCell{
     font-size:16px;
     /* color: #4B5C68; */
     font-weight: bold;
-    padding-top: 20px !important;
+    padding-top: 17px !important;
 
 }
 .countryFlag{
-    height: 27px;
-    width: 38px;
+    height: 37px;
+    width: 53px;
 }
 .td{
     width: 110px;
@@ -36,6 +36,7 @@
     width: 110px;
     text-align: left;
     padding-left: 12px;
+    padding-top: 7px;
 }
 .tr{
     height: 70px;
@@ -47,5 +48,17 @@
 .tdPoints{
     color: blue;
     padding-left: 22px !important;
+    padding-top: 23px !important;
 
+}
+
+@media (max-width: 500px) {
+    .displayNone{
+        display: none !important;
+    }
+}
+@media (min-width: 500px) {
+    .displayGoalDiff{
+        display: none !important;
+    }
 }
