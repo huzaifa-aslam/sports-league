@@ -74,7 +74,6 @@ const ScheduleView = ({ matches }) => {
                             )}
                           >
                             <td className="d-flex">{date}</td>
-                            {/* <br /> */}
                             <td className={styles.tdTime}>{time}</td>
                           </td>
                           <td

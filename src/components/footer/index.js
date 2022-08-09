@@ -16,6 +16,8 @@ const Footer = () => {
       if (response.status === 200 || response.status === 201) {
         let result = await response.json();
         setVersion(result.version);
+      } else {
+        toast.error("Something Went Wrong!");
       }
     } catch (error) {
       toast.error("Something Went Wrong!");

@@ -14,6 +14,8 @@ const Routes = () => {
         if (response?.status === 200 || response?.status === 201) {
           let result = await response.json();
           localStorage.setItem("authToken", result.access_token);
+        } else {
+          toast.error("Something Went Wrong!");
         }
       } catch (error) {
         toast.error("Something Went Wrong!");

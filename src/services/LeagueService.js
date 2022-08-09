@@ -79,6 +79,8 @@ class LeagueService {
         let result = await response.json();
         this.setMatches(result.matches);
         return result;
+      } else {
+        toast.error("Something Went Wrong!");
       }
     } catch (error) {
       toast.error("Something Went Wrong!");
