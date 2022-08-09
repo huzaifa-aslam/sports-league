@@ -3,6 +3,7 @@ import LeagueService from "../../services/LeagueService";
 import ScheduleView from "./ScheduleView";
 import moment from "moment";
 import { flagUrl } from "../../constants";
+import { toast } from "react-toastify";
 const Schedule = () => {
   const http = new LeagueService();
   const [matches, setMatches] = useState([]);
@@ -31,7 +32,7 @@ const Schedule = () => {
       });
       setMatches(updatedData);
     } catch (error) {
-      console.log("error", error);
+      toast.error("Something Went Wrong!");
     }
   };
 

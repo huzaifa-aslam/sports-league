@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { routes } from "../constants";
 import LeagueService from "../services/LeagueService";
-
+import { toast } from "react-toastify";
 const Routes = () => {
   const http = new LeagueService();
 
@@ -16,7 +16,7 @@ const Routes = () => {
           localStorage.setItem("authToken", result.access_token);
         }
       } catch (error) {
-        console.log("error", error);
+        toast.error("Something Went Wrong!");
       }
     };
 

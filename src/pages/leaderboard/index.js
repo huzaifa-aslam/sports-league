@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LeagueService from "../../services/LeagueService";
 import LeaderboardView from "./LeaderboardView";
+import { toast } from "react-toastify";
 
 const Leaderboard = () => {
   const http = new LeagueService();
@@ -18,7 +19,7 @@ const Leaderboard = () => {
       const teamDetail = http.getLeaderboard(result);
       setMatches(teamDetail);
     } catch (error) {
-      console.log("error", error);
+      toast.error("Something Went Wrong!");
     }
   };
 

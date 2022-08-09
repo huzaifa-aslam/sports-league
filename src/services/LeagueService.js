@@ -1,5 +1,6 @@
 import { getAllMatches, getAccessToken, v1, version } from "../constants";
 import { callGetAPI, fetchMatches, getLeaderboardData } from "../helper";
+import { toast } from "react-toastify";
 /**
  * A class representing a service that processes the data for match schedule
  * and generates leaderboard.
@@ -80,18 +81,26 @@ class LeagueService {
         return result;
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Something Went Wrong!");
     }
   }
 
   async fetchVersion() {
-    const response = await callGetAPI(version, "GET");
-    return response;
+    try {
+      const response = await callGetAPI(version, "GET");
+      return response;
+    } catch (error) {
+      toast.error("Something Went Wrong!");
+    }
   }
   async fetchAccessToken() {
-    let url = `${v1}${getAccessToken}`;
-    const response = await callGetAPI(url, "GET");
-    return response;
+    try {
+      let url = `${v1}${getAccessToken}`;
+      const response = await callGetAPI(url, "GET");
+      return response;
+    } catch (error) {
+      toast.error("Something Went Wrong!");
+    }
   }
 }
 
