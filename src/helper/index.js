@@ -7,6 +7,11 @@ import {
   matchWonPoint,
 } from "../constants";
 
+/**
+ * Asynchronic function to Call Get API.
+ *
+ * * @returns Response
+ */
 export const callGetAPI = async (url, method) => {
   const response = await fetch(`${baseUrl}${url}`, {
     method: method,
@@ -18,6 +23,11 @@ export const callGetAPI = async (url, method) => {
   return response;
 };
 
+/**
+ * Asynchronic function to Call Get API.
+ *
+ * * @returns List of Matches
+ */
 export const fetchMatches = async (url, method) => {
   const response = await fetch(`${baseUrl}${url}`, {
     method: method,
@@ -31,11 +41,15 @@ export const fetchMatches = async (url, method) => {
   return response;
 };
 
-// sorting team according
-// 1 descending points
-// 2 goal difference
-// 3 goals for
-// 4 ascending order by name
+/**
+   * sorting team according
+      1 descending points
+      2 goal difference
+      3 goals for
+      4 ascending order by name
+   *
+   * * @returns sorted List of Teams
+   */
 
 export const sortedTeams = (teams) => {
   if (teams.length) {
@@ -48,6 +62,11 @@ export const sortedTeams = (teams) => {
   }
 };
 
+/**
+ *
+ * * @returns Team detail
+ */
+
 export const getMatchDetail = (obj, homeTeamScore, awayTeamScore, point) => {
   obj.goalsFor = obj.goalsFor + homeTeamScore;
   obj.goalsAgainst = obj.goalsAgainst + awayTeamScore;
@@ -55,6 +74,12 @@ export const getMatchDetail = (obj, homeTeamScore, awayTeamScore, point) => {
   ++obj.matchPlayed;
   return obj;
 };
+
+/**
+
+   *
+   * * @returns leader board data
+   */
 export const getLeaderboardData = (teams) => {
   let allHomeTeams = teams?.map((item) => item?.homeTeam);
   let allAwayTeams = teams?.map((item) => item?.awayTeam);

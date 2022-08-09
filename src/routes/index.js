@@ -6,24 +6,24 @@ import { toast } from "react-toastify";
 const Routes = () => {
   const http = new LeagueService();
 
-  useEffect(() => {
-    // fetching access_token then saving in localStorage
-    const getAccessToken = async () => {
-      try {
-        const response = await http.fetchAccessToken();
-        if (response?.status === 200 || response?.status === 201) {
-          let result = await response.json();
-          localStorage.setItem("authToken", result.access_token);
-        } else {
-          toast.error("Something Went Wrong!");
-        }
-      } catch (error) {
-        toast.error("Something Went Wrong!");
-      }
-    };
+  // useEffect(() => {
+  //   // fetching access_token then saving in localStorage
+  //   const getAccessToken = async () => {
+  //     try {
+  //       const response = await http.fetchAccessToken();
+  //       if (response?.status === 200 || response?.status === 201) {
+  //         let result = await response.json();
+  //         localStorage.setItem("authToken", result.access_token);
+  //       } else {
+  //         toast.error("Something Went Wrong!");
+  //       }
+  //     } catch (error) {
+  //       toast.error("Something Went Wrong!");
+  //     }
+  //   };
 
-    getAccessToken();
-  }, []);
+  //   getAccessToken();
+  // }, []);
   return (
     <Switch>
       {routes.map(({ path, component }) => {

@@ -15,8 +15,7 @@ const Leaderboard = () => {
   const getAllMatches = async () => {
     try {
       await http.fetchData();
-      const result = http.getMatches();
-      const teamDetail = http.getLeaderboard(result);
+      const teamDetail = http.getLeaderboard();
       setMatches(teamDetail);
     } catch (error) {
       toast.error("Something Went Wrong!");

@@ -13,15 +13,17 @@
     height: 25px;
 }
 .logo{
-    width: 107px;
+    width: 110px;
     height: 50px;
 }
 .leftText{
     margin-left: 10px;
     padding-right: 40px;
+    font-size: 16px;
 }
 .rightText{
     margin-left: 10px;
+    font-size: 16px;
 }
 .rightCol{
     display: flex;
@@ -30,6 +32,7 @@
 }
 .textColor{
     color: #FFFFFF;
+    
 }
 .textColor:hover{
     color: #FFFFFF;

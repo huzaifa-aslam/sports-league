@@ -63,8 +63,8 @@ class LeagueService {
    *
    * @returns {Array} List of teams representing the leaderboard.
    */
-  getLeaderboard(teams) {
-    let leaderBoardData = getLeaderboardData(teams);
+  getLeaderboard() {
+    let leaderBoardData = getLeaderboardData(this.allMatches);
     return leaderBoardData;
   }
 
@@ -87,6 +87,12 @@ class LeagueService {
     }
   }
 
+  /**
+   * Asynchronic function to fetch version from the server.
+   *
+   *
+   * @returns version
+   */
   async fetchVersion() {
     try {
       const response = await callGetAPI(version, "GET");
@@ -95,6 +101,12 @@ class LeagueService {
       toast.error("Something Went Wrong!");
     }
   }
+
+  /**
+   * Asynchronic function to fetch Access Token from the server.
+   *
+   * * @returns Access Token
+   */
   async fetchAccessToken() {
     try {
       let url = `${v1}${getAccessToken}`;
