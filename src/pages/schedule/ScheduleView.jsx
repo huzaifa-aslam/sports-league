@@ -30,11 +30,7 @@ const ScheduleView = ({ matches }) => {
       <div className={clsx(`container-fluid ${styles.root} `)}>
         <div className="row">
           <div className="col-md-12">
-            <h4
-              className={clsx(
-                `fw-bold text-center pt-5 pb-2 ${styles.heading}`
-              )}
-            >
+            <h4 className={clsx(`fw-bold text-center  ${styles.heading}`)}>
               League Schedule
             </h4>
             <div className="table-responsive">
