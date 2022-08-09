@@ -9,34 +9,31 @@ const Schedule = () => {
   useEffect(() => {
     // fetching Matches List
 
-    const getAllMatches = async () => {
-      try {
-        const response = await http.fetchData();
-        if (response.status === 200 || response.status === 201) {
-          let result = await response.json();
-          let updatedData = result.matches.map((item) => {
-            return {
-              ...item,
-              date: moment(item.matchDate).format("DD.MM.YYYY"),
-              time: moment(item.matchDate).format("hh:mm"),
-              homeTeamFlag: `${flagUrl}${item?.homeTeam}`,
-              awayTeamFlag: `${flagUrl}${item?.awayTeam}`,
-              score: `${
-                item?.matchPlayed
-                  ? item.homeTeamScore + " : " + item.awayTeamScore
-                  : "-:-"
-              }`,
-            };
-          });
-          setMatches(updatedData);
-        }
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-
     getAllMatches();
   }, []);
+  const getAllMatches = async () => {
+    try {
+      await http.fetchData();
+      const result = http.getMatches();
+      let updatedData = result?.map((item) => {
+        return {
+          ...item,
+          date: moment(item.matchDate).format("DD.MM.YYYY"),
+          time: moment(item.matchDate).format("hh:mm"),
+          homeTeamFlag: `${flagUrl}${item?.homeTeam}`,
+          awayTeamFlag: `${flagUrl}${item?.awayTeam}`,
+          score: `${
+            item?.matchPlayed
+              ? item.homeTeamScore + " : " + item.awayTeamScore
+              : "-:-"
+          }`,
+        };
+      });
+      setMatches(updatedData);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   return <ScheduleView matches={matches} />;
 };

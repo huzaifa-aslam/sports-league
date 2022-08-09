@@ -8,21 +8,19 @@ const Leaderboard = () => {
   useEffect(() => {
     // fetching Matches List
 
-    const getAllMatches = async () => {
-      try {
-        const response = await http.fetchData();
-        if (response.status === 200 || response.status === 201) {
-          let result = await response.json();
-          const teamDetail = http.getLeaderboard(result?.matches);
-          setMatches(teamDetail);
-        }
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-
     getAllMatches();
   }, []);
+
+  const getAllMatches = async () => {
+    try {
+      await http.fetchData();
+      const result = http.getMatches();
+      const teamDetail = http.getLeaderboard(result);
+      setMatches(teamDetail);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   return <LeaderboardView matches={matches} />;
 };

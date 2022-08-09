@@ -34,14 +34,18 @@ class LeagueService {
    *
    * @param {Array} matches List of matches.
    */
-  setMatches(matches) {}
-
+  allMatches = [];
+  setMatches(matches) {
+    this.allMatches = matches;
+  }
   /**
    * Returns the full list of matches.
    *
    * @returns {Array} List of matches.
    */
-  getMatches() {}
+  getMatches() {
+    return this.allMatches;
+  }
 
   /**
    * Returns the leaderboard in a form of a list of JSON objecs.
@@ -67,9 +71,17 @@ class LeagueService {
    * Asynchronic function to fetch the data from the server.
    */
   async fetchData() {
-    let url = `${v1}${getAllMatches}`;
-    const response = await fetchMatches(url, "GET");
-    return response;
+    try {
+      let url = `${v1}${getAllMatches}`;
+      const response = await fetchMatches(url, "GET");
+      if (response.status === 200 || response.status === 201) {
+        let result = await response.json();
+        this.setMatches(result.matches);
+        return result;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async fetchVersion() {
